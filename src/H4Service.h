@@ -30,7 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4.h>
-#include<pmbtools.h>
+#include<h4tools.h>
 #include<config_plugins.h>
 #include<h4proxy.h>
 
