@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4Service.h>
+#if H4P_NETWORK
 #if H4P_UI_HEALTH
     #include<H4P_EmitHeap.h>
     #include<H4P_EmitQ.h>
@@ -83,3 +84,4 @@ class H4P_Heartbeat: public H4Service {
                 }
 #endif
 };
+#endif

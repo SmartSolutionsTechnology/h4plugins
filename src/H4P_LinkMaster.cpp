@@ -27,6 +27,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include<H4P_LinkMaster.h>
+#if H4P_NETWORK
 
 void H4P_LinkMaster::_handleEvent(const std::string& svc,H4PE_TYPE t,const std::string& msg){
     if(_running && svc==stateTag()) for(auto s:_slaves) _pMQTT->xPublish(CSTR((s+"/h4/switch")),msg);
@@ -64,3 +65,4 @@ void H4P_LinkMaster::slave(const std::string& otherh4,bool inout){
     if(inout) _slaves.insert(otherh4);
     else _slaves.erase(otherh4);
 }
+#endif

@@ -28,9 +28,11 @@ SOFTWARE.
 */
 #include<H4P_SerialCmd.h>
 // just for the versions
+#if H4P_NETWORK
 #include<vark_config.h>
 #include<dillo_config.h>
 #include<pango_config.h>
+#endif
 //
 extern std::unordered_map<std::string,H4Service*> h4pmap;
 extern bool h4punlocked;
@@ -348,9 +350,9 @@ void H4P_SerialCmd::info(){
     reply(" H4 %s",H4_VERSION);
     reply(" H4P %s",h4p[h4pTag()].data());
     reply(" H4UI %s",h4p.read("/h4UI").data());
-    reply(" AARD %s",AARDVARK_VERSION);
-    reply(" ARMA %s",ARMADILLO_VERSION);
-    reply(" PANGO %s",PANGO_VERSION);
+    // reply(" AARD %s",AARDVARK_VERSION);
+    // reply(" ARMA %s",ARMADILLO_VERSION);
+    // reply(" PANGO %s",PANGO_VERSION);
     reply(" Globals:");
     for(auto const& p:h4pGlobal) _showItem(p.first);
 }

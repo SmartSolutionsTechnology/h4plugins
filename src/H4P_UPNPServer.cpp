@@ -28,6 +28,7 @@ SOFTWARE.
 */
 
 #include<H4P_UPNPServer.h>
+#if H4P_NETWORK
 #include<H4P_SerialCmd.h>
 
 using H4P_UPNP_TAGMAP = std::unordered_map<std::string,std::unordered_set<std::string>>;
@@ -205,3 +206,4 @@ void H4P_UPNPServer::svcUp(){
     h4.every(H4P_UDP_REFRESH / 2,[=](){ _notify(aliveTag()); },nullptr,H4P_TRID_NTFY,true); // TAG
     H4Service::svcUp();
 }
+#endif

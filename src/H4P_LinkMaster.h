@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4Service.h>
+#if H4P_NETWORK
 #include<H4P_AsyncMQTT.h>
 
 class H4P_LinkMaster: public H4Service{
@@ -51,3 +52,4 @@ class H4P_LinkMaster: public H4Service{
 #endif
                 void        slave(const std::string& otherh4,bool inout=true);
 };
+#endif

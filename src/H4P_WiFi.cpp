@@ -26,7 +26,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 #include<H4P_WiFi.h>
+#if H4P_NETWORK
 #include<H4P_PinMachine.h>
 #include<H4P_Signaller.h>
 
@@ -438,3 +440,5 @@ void H4P_WiFi::svcDown(){
 void H4P_WiFi::uiAddAllUsrFields(const std::string& section){ for(auto const& g:h4pGlobal) if(g.first.rfind("usr_")!=std::string::npos) _uiAdd(replaceAll(g.first,"usr_",""),H4P_UI_TEXT,section,g.second); }
 
 void H4P_WiFi::uiAddDropdown(const std::string& name,H4P_NVP_MAP options,const std::string& section){ _uiAdd(name,H4P_UI_DROPDOWN,section,flattenMap(options)); }
+
+#endif

@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4Service.h>
+#if H4P_NETWORK
 #include<H4P_WiFi.h>
 
 STAG(alive);
@@ -77,3 +78,5 @@ class H4P_UPNPServer: public H4Service {
         static  void           _listenTag(const std::string& tag,const std::string& value);
                 void           _init() override;
 };
+
+#endif

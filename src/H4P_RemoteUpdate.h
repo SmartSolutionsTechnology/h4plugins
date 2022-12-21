@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4Service.h>
+#if H4P_NETWORK
 #include<H4P_SerialCmd.h>
 
 #ifdef ARDUINO_ARCH_ESP8266
@@ -103,3 +104,4 @@ class H4P_RemoteUpdate: public H4Service, public HTTPUpdate {
                     H4Service::svcUp();
                 }
 };
+#endif

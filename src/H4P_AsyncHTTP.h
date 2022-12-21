@@ -29,7 +29,9 @@ SOFTWARE.
 */
 #pragma once
 
+
 #include<H4Service.h>
+#if H4P_NETWORK
 #include<ArmadilloHTTP.h>
 
 class H4P_AsyncHTTP: public H4Service, public ArmadilloHTTP {
@@ -46,3 +48,4 @@ class H4P_AsyncHTTP: public H4Service, public ArmadilloHTTP {
 
                 void    globalsFromSimpleJson(ARMA_HTTP_REPLY r);
 };
+#endif

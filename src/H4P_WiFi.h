@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4Service.h>
+#if H4P_NETWORK
 
 #ifdef ARDUINO_ARCH_ESP8266
     #include<ESP8266WiFi.h>
@@ -153,3 +154,4 @@ class H4P_WiFi: public H4Service, public AsyncWebServer {
                 void            _signalOff(){ YEVENT(H4PE_SIGNAL,""); }
                 void            _uiAdd(const std::string& name,H4P_UI_TYPE t,const std::string& h="u",const std::string& v="",uint8_t c=H4P_UILED_BI);
 };
+#endif

@@ -31,6 +31,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4Service.h>
+#if H4P_NETWORK
 #ifdef ARDUINO_ARCH_ESP8266
     #include "sntp.h"
 #else
@@ -102,3 +103,4 @@ class H4P_Timekeeper: public H4Service {
         virtual void        svcUp() override;
         virtual void        svcDown() override;
 };
+#endif

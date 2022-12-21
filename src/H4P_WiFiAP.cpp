@@ -26,7 +26,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 #include<H4Service.h>
+#if H4P_NETWORK
 #include<H4P_WiFi.h>
 
 #if H4P_USE_WIFI_AP
@@ -63,4 +65,5 @@ void H4P_WiFi::_startAP(){
 
     _startWebserver();
 }
+#endif
 #endif

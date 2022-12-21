@@ -27,6 +27,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include<H4P_Heartbeat.h>
+#if H4P_NETWORK
 
 void H4P_Heartbeat::_handleEvent(const std::string& svc,H4PE_TYPE t,const std::string& msg) {
     switch(t){
@@ -63,3 +64,4 @@ std::string H4P_Heartbeat::secsToTime(uint32_t sex){
     sprintf(buf,"%3d %02d:%02d:%02d",sex/86400,(sex%86400)/3600,(sex/60)%60,sex%60);
     return std::string(buf);
 }
+#endif

@@ -26,8 +26,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include<H4P_SerialCmd.h>
 #include<H4P_AsyncMQTT.h>
+#if H4P_NETWORK
+#include<H4P_SerialCmd.h>
 
 // payload: scheme,broker,uname,pws,port e.g. https,192.168.1.4,,,1883
 uint32_t H4P_AsyncMQTT::_change(std::vector<std::string> vs){  // broker,uname,pword,port
@@ -205,3 +206,4 @@ void H4P_AsyncMQTT::unsubscribeDevice(std::string topic){
 }
 
 void H4P_AsyncMQTT::unsubscribeDevice(std::initializer_list<std::string> topic){ for(auto const& t:topic) unsubscribeDevice(t); }
+#endif

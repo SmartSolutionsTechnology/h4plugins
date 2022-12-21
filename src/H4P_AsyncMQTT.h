@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include<H4Service.h>
+#if H4P_NETWORK
 #include<H4P_Signaller.h>
 #include<H4P_WiFi.h>
 #include<PangolinMQTT.h>
@@ -103,3 +104,4 @@ class H4P_AsyncMQTT: public H4Service, public PangolinMQTT{
         virtual void        _init() override;
                 void        _reply(std::string msg) override { publishDevice("reply",msg); }
 };
+#endif

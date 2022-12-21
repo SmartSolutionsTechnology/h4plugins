@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include <H4Service.h>
+#if H4P_NETWORK
 #include <H4P_AsyncMQTT.h>
 
 class H4P_MQTTLogger: public H4Service {
@@ -44,3 +45,4 @@ class H4P_MQTTLogger: public H4Service {
         virtual void info() override { H4Service::info(); reply(" Topic: %s",CSTR(_topic)); }
 #endif
 };
+#endif

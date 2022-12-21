@@ -53,41 +53,43 @@ SOFTWARE.
 #define STAG(x) constexpr const char* x##Tag(){ return #x; }
 
 STAG(age);
-STAG(all);
 STAG(autoOff);
 STAG(bin);
 STAG(board)
-STAG(broker);
 STAG(change);
 STAG(chip);
+STAG(all);
 STAG(cmd);
 STAG(device);
+STAG(report);
+STAG(tick);
 STAG(gpio);
 STAG(h4);
 STAG(heap);
 STAG(ip);
-STAG(mqconf);
-STAG(mQpass);
-STAG(mqtt);
-STAG(mQuser);
 STAG(name);
 STAG(NBoots);
 STAG(onof);
 STAG(pcent);
 STAG(psk); // chg password
-STAG(report);
 STAG(show);
 STAG(snif);
 STAG(ssid);
 STAG(state);
 STAG(stop);
-STAG(tcp);
-STAG(tick);
 STAG(time);
-STAG(upnp);
 STAG(upTime);
 STAG(user);
+#if H4P_NETWORK
+STAG(broker);
+STAG(mqconf);
+STAG(mQpass);
+STAG(mqtt);
+STAG(mQuser);
+STAG(tcp);
+STAG(upnp);
 STAG(wifi);
+#endif
 STAG(wink);
 
 constexpr const char* cmdhash(){ return "/h4/#"; }

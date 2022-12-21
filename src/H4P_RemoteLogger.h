@@ -30,6 +30,7 @@ SOFTWARE.
 #pragma once
 
 #include <H4Service.h>
+#if H4P_NETWORK
 #include <H4P_AsyncHTTP.h>
 
 class H4P_RemoteLogger: public H4P_AsyncHTTP {
@@ -46,3 +47,4 @@ class H4P_RemoteLogger: public H4P_AsyncHTTP {
     public:
         H4P_RemoteLogger(const std::string& url,uint32_t filter=H4PE_ALL); // amount of free SPIFFS space to use
 };
+#endif

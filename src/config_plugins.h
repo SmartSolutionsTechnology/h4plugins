@@ -30,6 +30,7 @@ SOFTWARE.
 
 #define H4P_VERSION "3.2.0"
 
+#define H4P_NETWORK             0
 // Make sure you read the documentation and have arrangements in place for using AP mode :)
 // If you don't have the H4P_WiFiAP.cpp file, the linker will fail.
 #define H4P_USE_WIFI_AP         0
@@ -141,7 +142,9 @@ enum H4P_UILED_COLOR {
 #define H4P_TIME_RESYNC        3600000
 
 constexpr const char* h4pTag(){ return "H4P"; }
+#if H4P_NETWORK
 constexpr const char* httpTag(){ return "http://"; }
+#endif
 constexpr const char* rootTag(){ return "upnp:rootdevice"; }
 constexpr const char* rupdTag(){ return "updateURL"; }
 constexpr const char* glob(){ return "/glob"; }
