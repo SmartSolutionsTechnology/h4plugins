@@ -42,15 +42,15 @@ void H4P_RemoteLogger::_handleEvent(const std::string& svc,H4PE_TYPE t,const std
         _eventdata["msg"]=msg;
         POST(_url,_eventdata,[](ARMA_HTTP_REPLY r){
 /*
-            Serial.printf("H4P_RL RCVD T=%u %d\n",millis(),r.httpResponseCode);
-            for(auto const h:r.responseHeaders) Serial.printf("%s=%s\n",h.first.data(),h.second.data());
+            H4P_Pirntf("H4P_RL RCVD T=%u %d\n",millis(),r.httpResponseCode);
+            for(auto const h:r.responseHeaders) H4P_Pirntf("%s=%s\n",h.first.data(),h.second.data());
             if(r.httpResponseCode < 200 || r.httpResponseCode > 299){
-                Serial.printf("HTTP Response Code: %d\n",r.httpResponseCode);
-                Serial.printf("Response Headers:\n");
-                for(auto const h:r.responseHeaders) Serial.printf("%s=%s\n",h.first.data(),h.second.data());
-                Serial.printf("\nRaw Data\n");
+                H4P_Pirntf("HTTP Response Code: %d\n",r.httpResponseCode);
+                H4P_Pirntf("Response Headers:\n");
+                for(auto const h:r.responseHeaders) H4P_Pirntf("%s=%s\n",h.first.data(),h.second.data());
+                H4P_Pirntf("\nRaw Data\n");
                 dumphex(r.data,r.length);
-                Serial.printf("\nAs a std::string - BE CAREFUL, IT MAY NOT BE A STRING!!!\n%s\n",r.asStdstring().data()); // Data may NOT be a std::string -> crash!!!
+                H4P_Pirntf("\nAs a std::string - BE CAREFUL, IT MAY NOT BE A STRING!!!\n%s\n",r.asStdstring().data()); // Data may NOT be a std::string -> crash!!!
             }
 */
         });

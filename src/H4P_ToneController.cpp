@@ -225,7 +225,7 @@ void H4P_Voice::play(const std::string& tune,int transpose){
 }
 
 void H4P_Voice::_tone(uint32_t f,uint8_t effect,uint32_t d,H4_FN_VOID chain){
-//    Serial.printf("PIN %u f=%u e=%u PWM=%u d=%d\n",_pin,f,0x3ff >> (effect < 0x30 ? 1:10-(effect-0x30)),d);
+//    H4P_Pirntf("PIN %u f=%u e=%u PWM=%u d=%d\n",_pin,f,0x3ff >> (effect < 0x30 ? 1:10-(effect-0x30)),d);
     _HAL_analogFrequency(_pin,f);
     _analogWrite(0x3ff >> (effect < 0x30 ? 1:10-(effect-0x30))); // pwmrange 1023 on '8266
     if(d){

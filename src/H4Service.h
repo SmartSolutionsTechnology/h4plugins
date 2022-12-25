@@ -35,12 +35,12 @@ SOFTWARE.
 #include<h4proxy.h>
 
 #ifdef ARDUINO_ARCH_ESP8266
-    #include<LittleFS.h>
-    #define HAL_FS LittleFS
+    // #include<LittleFS.h>
+    // #define HAL_FS LittleFS
 #else
-    #include<FS.h>
-    #include<SPIFFS.h>
-    #define HAL_FS SPIFFS
+    // #include<FS.h>
+    // #include<SPIFFS.h>
+    // #define HAL_FS SPIFFS
     std::string getTerminalName(const std::string& s);
 #endif
 
@@ -50,34 +50,38 @@ SOFTWARE.
 #include<unordered_set>
 #include<map>
 //
+#if !EXTERNAL_TAGS
 #define STAG(x) constexpr const char* x##Tag(){ return #x; }
+STAG(all);
+STAG(cmd);
+STAG(name);
+STAG(state);
+STAG(ssid);
+STAG(time);
+STAG(report);
+STAG(device);
+STAG(tick);
+STAG(change);
+#else
+#include "fw_common.h"
+#endif
 
 STAG(age);
 STAG(autoOff);
 STAG(bin);
 STAG(board)
-STAG(change);
 STAG(chip);
-STAG(all);
-STAG(cmd);
-STAG(device);
-STAG(report);
-STAG(tick);
 STAG(gpio);
 STAG(h4);
 STAG(heap);
 STAG(ip);
-STAG(name);
 STAG(NBoots);
 STAG(onof);
 STAG(pcent);
 STAG(psk); // chg password
 STAG(show);
 STAG(snif);
-STAG(ssid);
-STAG(state);
 STAG(stop);
-STAG(time);
 STAG(upTime);
 STAG(user);
 #if H4P_NETWORK
@@ -345,7 +349,7 @@ class H4Service {
                 uint32_t            _guardString2(std::vector<std::string> vs,std::function<H4_CMD_ERROR(std::string,std::string)> f);
                 uint32_t            _guard1(std::vector<std::string> vs,H4_FN_MSG f);
         virtual void                _handleEvent(const std::string& svc,H4PE_TYPE t,const std::string& msg){}
-        virtual void                _reply(std::string msg) { Serial.println(CSTR(msg)); }
+        virtual void                _reply(std::string msg) { H4P_Pirntln(CSTR(msg)); }
 
         template<typename T>
         T* depend(const std::string& svc){
@@ -387,17 +391,17 @@ class H4Service {
 };
 
 #define H4P_DEFAULT_SYSTEM_HANDLER case H4PE_SYSFATAL: \
-    Serial.printf("\n************** FATAL ERROR ***********************\n*\n"); \
-    Serial.printf("*    %s %s \n",CSTR(svc),CSTR(msg)); \ 
-    Serial.printf("*\n**************************************************\n"); \
+    H4P_Pirntf("\n************** FATAL ERROR ***********************\n*\n"); \
+    H4P_Pirntf("*    %s %s \n",CSTR(svc),CSTR(msg)); \ 
+    H4P_Pirntf("*\n**************************************************\n"); \
     pinMode(H4P_ASSUMED_LED,OUTPUT); while(1){ digitalWrite(H4P_ASSUMED_LED,LOW);delay(25);digitalWrite(H4P_ASSUMED_LED,HIGH);delay(25); }  \
 case H4PE_SYSWARN: \
-    Serial.printf("\n****************** WARNING ***********************\n*\n"); \
-    Serial.printf("*    %s %s \n",CSTR(svc),CSTR(msg)); \ 
-    Serial.printf("*\n**************************************************\n"); \
+    H4P_Pirntf("\n****************** WARNING ***********************\n*\n"); \
+    H4P_Pirntf("*    %s %s \n",CSTR(svc),CSTR(msg)); \ 
+    H4P_Pirntf("*\n**************************************************\n"); \
     break; \
 case H4PE_SYSINFO: \
-    Serial.printf("\n*INFO: %s %s\n",CSTR(svc),CSTR(msg)); \
+    H4P_Pirntf("\n*INFO: %s %s\n",CSTR(svc),CSTR(msg)); \
     break;
 
 #define H4PGLUE2(x,y) x##y

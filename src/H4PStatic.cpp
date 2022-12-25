@@ -84,11 +84,11 @@ std::string getTerminalName(const std::string& s) {
 #include<H4P_GateKeeper.h>
 
 void h4StartPlugins(){
-    Serial.printf("Registered to start:\n");
-    for(auto const& s:h4pmap) Serial.printf(" %s\n",CSTR(s.first));
-    Serial.printf("GPIOs defined:\n");
+    H4P_Pirntf("Registered to start:\n");
+    for(auto const& s:h4pmap) H4P_Pirntf(" %s\n",CSTR(s.first));
+    H4P_Pirntf("GPIOs defined:\n");
     for(auto const& p:h4pPinMap) {
-        Serial.printf(" %02d S=%d C=%d NPL=%d\n",p.first,p.second->_s,p.second->_c,p.second->_pipeline.size()); 
+        H4P_Pirntf(" %02d S=%d C=%d NPL=%d\n",p.first,p.second->_s,p.second->_c,p.second->_pipeline.size()); 
         p.second->dump();
     }
 #else
@@ -169,13 +169,13 @@ TESTERS / DIAG
 #if SANITY
 void h4pInventory(){
     for(auto et:h4pevt){
-        Serial.printf("%s [0x%08x] Listeners:\n",CSTR(h4pGetEventName(static_cast<H4PE_TYPE>(et.first))),et.first);
+        H4P_Pirntf("%s [0x%08x] Listeners:\n",CSTR(h4pGetEventName(static_cast<H4PE_TYPE>(et.first))),et.first);
         for(auto el:et.second){
             std::string svc=el.first;
-            Serial.printf("  %s\n",CSTR(svc));
+            H4P_Pirntf("  %s\n",CSTR(svc));
         }
     }
-    Serial.println();
+    H4P_Pirntln();
     h4p.plugins();
 }
 #endif

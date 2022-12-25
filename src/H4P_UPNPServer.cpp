@@ -145,7 +145,7 @@ void H4P_UPNPServer::_upnp(AsyncWebServerRequest *request){ // redo
        	h4p.gvSetstring("gs",(soap.find("Get")==std::string::npos) ? "Set":"Get"); 
         uint32_t _set=soap.find(">1<")==std::string::npos ? 0:1;
         if(h4p["gs"]=="Set") h4p.gvSetInt(stateTag(),_set); //=//XEVENT(H4PE_ONOF,"%d",_set);
-//        Serial.printf("XML RESPONSE %s\n",h4preplaceparams(_soap).data());
+//        H4P_Pirntf("XML RESPONSE %s\n",h4preplaceparams(_soap).data());
         request->send(200, "text/xml", CSTR(h4preplaceparams(_soap))); // refac
         h4p.gvErase("gs");
     },nullptr, H4P_TRID_SOAP);

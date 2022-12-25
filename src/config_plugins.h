@@ -30,6 +30,7 @@ SOFTWARE.
 
 #define H4P_VERSION "3.2.0"
 
+#define EXTERNAL_TAGS           1
 #define H4P_NETWORK             0
 // Make sure you read the documentation and have arrangements in place for using AP mode :)
 // If you don't have the H4P_WiFiAP.cpp file, the linker will fail.
@@ -90,6 +91,15 @@ enum H4P_UILED_COLOR {
     #define H4P_ASSUMED_COLOR H4P_UILED_BLUE
 #endif
 
+#if H4P_DEBUG
+#define H4P_Pirntf(f_, ...)    Serial.printf((f_), ##__VA_ARGS__)
+#define H4P_Pirntln(f_)    Serial.printf(f_ "\n")
+#else
+#define H4P_Pirntf(f_, ...)
+#define H4P_Pirntln(f_)
+#endif
+
+#define H4P_INTERACT_SERIAL     false
 #define H4P_WEBSERVER_PORT      80
 /*
             TWEAKABLES

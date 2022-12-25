@@ -285,10 +285,10 @@ int H4P_Timekeeper::H4P_DST_EU(uint32_t t) {
 //	struct tm tt;
 //	tt = *gmtime(&st);
 //	strftime( buf, sizeof(buf), "%a %Y-%m-%d %H:%M:%S", &tt );
-//	Serial.printf("DST Start = %s\n", buf);
+//	H4P_Pirntf("DST Start = %s\n", buf);
 //	tt = *gmtime(&en);
 //	strftime( buf, sizeof(buf), "%a %Y-%m-%d %H:%M:%S", &tt );
-//	Serial.printf("DST End   = %s\n", buf);
+//	H4P_Pirntf("DST End   = %s\n", buf);
 
 	if ((t >= st) && (t < en)) {
 		return 60*60;
@@ -341,10 +341,10 @@ int H4P_Timekeeper::H4P_DST_USA(uint32_t t) {
 //	struct tm tt;
 //	tt = *gmtime(&st);
 //	strftime( buf, sizeof(buf), "%a %Y-%m-%d %H:%M:%S", &tt );
-//	Serial.printf("DST Start = %s\n", buf);
+//	H4P_Pirntf("DST Start = %s\n", buf);
 //	tt = *gmtime(&en);
 //	strftime( buf, sizeof(buf), "%a %Y-%m-%d %H:%M:%S", &tt );
-//	Serial.printf("DST End   = %s\n", buf);
+//	H4P_Pirntf("DST End   = %s\n", buf);
 
 	if ((t >= st) && (t < en)) {
 		return 60*60;

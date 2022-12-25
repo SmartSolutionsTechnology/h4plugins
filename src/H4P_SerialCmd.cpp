@@ -407,13 +407,17 @@ void H4P_SerialCmd::showFS(){
 #endif // logmessages
 
 void H4P_SerialCmd::svcUp(){
+#if H4P_INTERACT_SERIAL
     h4._hookLoop([this](){ _run(); },_pid); 
+#endif
     H4Service::svcUp();
     _persist();
 }
 
 void H4P_SerialCmd::svcDown(){
+#if H4P_INTERACT_SERIAL
     h4._unHook(_pid);
+#endif
     H4Service::svcDown();
 }
 //
